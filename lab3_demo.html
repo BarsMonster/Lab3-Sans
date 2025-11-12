@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Font Validator - Lab3 Sans</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Source+Sans+3:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+    <title>Font Demo - Lab3 Sans</title>
+
+    <!-- Fonts loaded from CDN with full OpenType features -->
+    <!-- Inter from jsDelivr CDN (official Inter repository) -->
+    <!-- Source Sans 3 from jsDelivr CDN (official Adobe repository) -->
+
     <style>
         * {
             margin: 0;
@@ -231,17 +233,31 @@
             font-style: italic;
         }
 
-        /* Lab3 Sans - All weights (upright only) */
-        @font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Regular.ttf') format('truetype'); font-weight: 400; }
-        @font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Medium.ttf') format('truetype'); font-weight: 500; }
-        @font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-SemiBold.ttf') format('truetype'); font-weight: 600; }
-        @font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Bold.ttf') format('truetype'); font-weight: 700; }
-        @font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Black.ttf') format('truetype'); font-weight: 900; }
+        /* Inter - Weights used in validator (400, 500, 600, 700, 900) from jsDelivr CDN */
+        @font-face { font-family: 'Inter'; src: url('https://cdn.jsdelivr.net/gh/rsms/inter@4.0/docs/font-files/Inter-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'Inter'; src: url('https://cdn.jsdelivr.net/gh/rsms/inter@4.0/docs/font-files/Inter-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+        @font-face { font-family: 'Inter'; src: url('https://cdn.jsdelivr.net/gh/rsms/inter@4.0/docs/font-files/Inter-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+        @font-face { font-family: 'Inter'; src: url('https://cdn.jsdelivr.net/gh/rsms/inter@4.0/docs/font-files/Inter-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+        @font-face { font-family: 'Inter'; src: url('https://cdn.jsdelivr.net/gh/rsms/inter@4.0/docs/font-files/Inter-Black.woff2') format('woff2'); font-weight: 900; font-display: swap; }
+
+        /* Source Sans 3 - Weights used in validator (400, 500, 600, 700, 900) from jsDelivr CDN */
+        @font-face { font-family: 'Source Sans 3'; src: url('https://cdn.jsdelivr.net/gh/adobe-fonts/source-sans@release/WOFF2/TTF/SourceSans3-Regular.ttf.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'Source Sans 3'; src: url('https://cdn.jsdelivr.net/gh/adobe-fonts/source-sans@release/WOFF2/TTF/SourceSans3-Medium.ttf.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+        @font-face { font-family: 'Source Sans 3'; src: url('https://cdn.jsdelivr.net/gh/adobe-fonts/source-sans@release/WOFF2/TTF/SourceSans3-Semibold.ttf.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+        @font-face { font-family: 'Source Sans 3'; src: url('https://cdn.jsdelivr.net/gh/adobe-fonts/source-sans@release/WOFF2/TTF/SourceSans3-Bold.ttf.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+        @font-face { font-family: 'Source Sans 3'; src: url('https://cdn.jsdelivr.net/gh/adobe-fonts/source-sans@release/WOFF2/TTF/SourceSans3-Black.ttf.woff2') format('woff2'); font-weight: 900; font-display: swap; }
+
+        /* Lab3 Sans - Weights used in validator (400, 500, 600, 700, 900) from local files */
+        @font-face { font-family: 'Lab3 Sans'; src: url('fonts/Lab3Sans-Regular.ttf') format('truetype'); font-weight: 400; }
+        @font-face { font-family: 'Lab3 Sans'; src: url('fonts/Lab3Sans-Medium.ttf') format('truetype'); font-weight: 500; }
+        @font-face { font-family: 'Lab3 Sans'; src: url('fonts/Lab3Sans-SemiBold.ttf') format('truetype'); font-weight: 600; }
+        @font-face { font-family: 'Lab3 Sans'; src: url('fonts/Lab3Sans-Bold.ttf') format('truetype'); font-weight: 700; }
+        @font-face { font-family: 'Lab3 Sans'; src: url('fonts/Lab3Sans-Black.ttf') format('truetype'); font-weight: 900; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Font Validator - Lab3 Sans</h1>
+        <h1>Font Demo - Lab3 Sans</h1>
         <p class="subtitle">Comparison of Inter, Source Sans 3, and Lab3 Sans across all weights</p>
 
         <div class="controls">
