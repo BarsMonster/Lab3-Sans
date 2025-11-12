@@ -4,7 +4,7 @@ It is widely used, and to step away slightly from the crowd - double-storey g mi
 Double-storey g is transplanted from Source Sans 3, with corrected scaling and spacing.
 Only Roman variant is transplanted. Italic is single-storey, and supposed to be closer to handwriting, therefore one should use regular Inter font for Italic.
 
-Stroke width of Source Sans 3 is incompatible for Light and ExtraLight weights, so these are omitted.
+Stroke width of Source Sans 3 is incompatible for Light and ExtraLight weights, so these are omitted. For all other weights stroke width is just a tiny bit smaller. It might be possible to fix it by using custom weight from donor font, but this is probably for the future if ever needed.
 
 This should be considered a live demo until (eventually and hopefully) Inter implements double-storey g variation (https://github.com/rsms/inter/issues/539). 
 
