@@ -30,18 +30,34 @@ https://barsmonster.github.io/Lab3-Sans/lab3_demo.html
 
 # For testing you can use files via GitHub Pages CDN:
 ```
-/* WOFF2 font for modern browsers */
-@font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Regular.woff2') format('woff2'); font-weight: 400; }
-@font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Medium.woff2') format('woff2'); font-weight: 500; }
-@font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-SemiBold.woff2') format('woff2'); font-weight: 600; }
-@font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Bold.woff2') format('woff2'); font-weight: 700; }
-@font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Black.woff2') format('woff2'); font-weight: 900; }
-
-/* TTF font for legacy browsers */
-@font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Regular.ttf') format('truetype'); font-weight: 400; }
-@font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Medium.ttf') format('truetype'); font-weight: 500; }
-@font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-SemiBold.ttf') format('truetype'); font-weight: 600; }
-@font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Bold.ttf') format('truetype'); font-weight: 700; }
-@font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Black.ttf') format('truetype'); font-weight: 900; }
-
+  @font-face {
+      font-family: 'Lab3 Sans';
+      src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Regular.woff2') format('woff2'),
+           url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Regular.ttf') format('truetype');
+      font-weight: 400;
+  }
+  @font-face {
+      font-family: 'Lab3 Sans';
+      src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Medium.woff2') format('woff2'),
+           url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Medium.ttf') format('truetype');
+      font-weight: 500;
+  }
+  @font-face {
+      font-family: 'Lab3 Sans';
+      src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-SemiBold.woff2') format('woff2'),
+           url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-SemiBold.ttf') format('truetype');
+      font-weight: 600;
+  }
+  @font-face {
+      font-family: 'Lab3 Sans';
+      src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Bold.woff2') format('woff2'),
+           url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Bold.ttf') format('truetype');
+      font-weight: 700;
+  }
+  @font-face {
+      font-family: 'Lab3 Sans';
+      src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Black.woff2') format('woff2'),
+           url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Black.ttf') format('truetype');
+      font-weight: 900;
+  }
 ```
