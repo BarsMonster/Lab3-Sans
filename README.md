@@ -6,8 +6,7 @@ Only Roman variant is transplanted. Italic is single-storey, and supposed to be 
 
 Stroke width of Source Sans 3 is incompatible for Light and ExtraLight weights, so these are omitted.
 
-This should be considered a live demo until (eventually and hopefully) Inter implements double-storey g variation. 
-Relevant feature request link: https://github.com/rsms/inter/issues/539
+This should be considered a live demo until (eventually and hopefully) Inter implements double-storey g variation. Relevant feature request link: https://github.com/rsms/inter/issues/539
 
 # Quick comparison
 **Lab3 Sans:**
