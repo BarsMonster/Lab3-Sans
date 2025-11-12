@@ -22,7 +22,7 @@ This should be considered a live demo until (eventually and hopefully) Inter imp
 # Credits & license
 - 99.99% of work here done by The Inter Project Authors (https://github.com/rsms/inter) who developed the base font.
 - g glyph is from Adobe font Source Sans 3 (https://fonts.adobe.com/fonts/source-sans-3).
-- License is SIL OPEN FONT LICENSE Version 1.1 
+License is SIL OPEN FONT LICENSE Version 1.1 
 
 # Demo
 https://barsmonster.github.io/Lab3-Sans/lab3_demo.html
