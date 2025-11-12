@@ -13,13 +13,21 @@ https://barsmonster.github.io/Lab3-Sans/lab3_demo.html
 
 # For testing you can use files via GitHub Pages CDN:
 https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-SemiBold.woff2
+
 https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Regular.woff2
+
 https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Medium.woff2
+
 https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Bold.woff2
+
 https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Black.woff2
 
 https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-SemiBold.ttf
+
 https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Regular.ttf
+
 https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Medium.ttf
+
 https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Bold.ttf
+
 https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Black.ttf
