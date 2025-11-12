@@ -9,9 +9,14 @@ Stroke width of Source Sans 3 is incompatible for Light and ExtraLight weights, 
 This should be considered a live demo until (eventually and hopefully) Inter implements double-storey g variation.
 
 # Quick comparison
-| Inter | Source Sans 3 | Lab3 Sans |
-| ------------- |:-------------:| -----:|
-| 1 | 2 | 3 |
+**Lab3 Sans:**
+![Lab3 Sans](lab3sans-sample.png)
+
+**Inter:**
+![Inter](inter-sample.png)
+
+**Source Sans 3**
+![Source Sans 3](sourcesans3-sample.png)
 
 
 # Credits & license
