@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Validator - Lab3 Sans</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .info-box p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .controls {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .size-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .size-control {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .size-value {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 30px 0 15px 0;
+            padding: 10px;
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background: #f9f9f9;
+            font-weight: 600;
+            color: #555;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .variant-name {
+            font-weight: 600;
+            color: #2c3e50;
+            min-width: 120px;
+            background: #fafafa;
+        }
+
+        .g-highlight {
+            color: #e74c3c;
+            font-weight: 700;
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .features-column {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .features-title {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .feature-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .feature-checkbox input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .feature-checkbox label {
+            cursor: pointer;
+            font-size: 12px;
+            color: #555;
+            user-select: none;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .feature-checkbox label .feature-tag {
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            color: #3498db;
+            font-size: 11px;
+        }
+
+        .feature-checkbox label .feature-name {
+            color: #333;
+            font-size: 12px;
+        }
+
+        .feature-checkbox label .feature-chars {
+            color: #999;
+            font-size: 11px;
+            font-style: italic;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Source+Sans+3:wght@400;500;600;700;900&display=swap');
+
+        /* Lab3 Sans - All weights (upright only) */
+        @font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Regular.ttf') format('truetype'); font-weight: 400; }
+        @font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Medium.ttf') format('truetype'); font-weight: 500; }
+        @font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-SemiBold.ttf') format('truetype'); font-weight: 600; }
+        @font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Bold.ttf') format('truetype'); font-weight: 700; }
+        @font-face { font-family: 'Lab3 Sans'; src: url('https://barsmonster.github.io/Lab3-Sans/fonts/Lab3Sans-Black.ttf') format('truetype'); font-weight: 900; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Font Validator - Lab3 Sans</h1>
+        <p class="subtitle">Comparison of Inter, Source Sans 3, and Lab3 Sans across all weights</p>
+
+        <div class="controls">
+            <div class="control-group">
+                <label class="control-label" for="titleText">Title Text:</label>
+                <input type="text" id="titleText" value="369 going garage gigantic">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Title Size: <span id="titleSizeValue" class="size-value">3em</span></label>
+                <input type="range" id="titleSize" min="1" max="6" value="3" step="0.1">
+            </div>
+        </div>
+
+        <div class="section-title">Font feature selector:</div>
+
+        <div class="features-container">
+            <div class="features-column">
+                <div class="features-title">Inter</div>
+                <div class="features-list">
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-aalt">
+                    <label for="inter-aalt"><span class="feature-tag">aalt</span> <span class="feature-name">Access All Alternates</span> <span class="feature-chars">[ !()*+,-.0123456789:;<=>?@AO[]…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-calt">
+                    <label for="inter-calt"><span class="feature-tag">calt</span> <span class="feature-name">Contextual Alternates</span> <span class="feature-chars">[-<=>]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-case">
+                    <label for="inter-case"><span class="feature-tag">case</span> <span class="feature-name">Case-Sensitive Forms</span> <span class="feature-chars">[()*+-:<=>@[]{}~]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-ccmp">
+                    <label for="inter-ccmp"><span class="feature-tag">ccmp</span> <span class="feature-name">Glyph Composition</span> <span class="feature-chars">[!#+-/0123456789<=>?ABCDEFGHIJK…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv01">
+                    <label for="inter-cv01"><span class="feature-tag">cv01</span> <span class="feature-name">Character Variant 01</span> <span class="feature-chars">[1]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv02">
+                    <label for="inter-cv02"><span class="feature-tag">cv02</span> <span class="feature-name">Character Variant 02</span> <span class="feature-chars">[4]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv03">
+                    <label for="inter-cv03"><span class="feature-tag">cv03</span> <span class="feature-name">Character Variant 03</span> <span class="feature-chars">[6]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv04">
+                    <label for="inter-cv04"><span class="feature-tag">cv04</span> <span class="feature-name">Character Variant 04</span> <span class="feature-chars">[9]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv05">
+                    <label for="inter-cv05"><span class="feature-tag">cv05</span> <span class="feature-name">Character Variant 05</span> <span class="feature-chars">[l]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv06">
+                    <label for="inter-cv06"><span class="feature-tag">cv06</span> <span class="feature-name">Character Variant 06</span> <span class="feature-chars">[u]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv07">
+                    <label for="inter-cv07"><span class="feature-tag">cv07</span> <span class="feature-name">Character Variant 07</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv08">
+                    <label for="inter-cv08"><span class="feature-tag">cv08</span> <span class="feature-name">Character Variant 08</span> <span class="feature-chars">[I]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv09">
+                    <label for="inter-cv09"><span class="feature-tag">cv09</span> <span class="feature-name">Character Variant 09</span> <span class="feature-chars">[3]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv10">
+                    <label for="inter-cv10"><span class="feature-tag">cv10</span> <span class="feature-name">Character Variant 10</span> <span class="feature-chars">[G]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv11">
+                    <label for="inter-cv11"><span class="feature-tag">cv11</span> <span class="feature-name">Character Variant 11</span> <span class="feature-chars">[a]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv12">
+                    <label for="inter-cv12"><span class="feature-tag">cv12</span> <span class="feature-name">Character Variant 12</span> <span class="feature-chars">[f]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv13">
+                    <label for="inter-cv13"><span class="feature-tag">cv13</span> <span class="feature-name">Character Variant 13</span> <span class="feature-chars">[t]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-cv14">
+                    <label for="inter-cv14"><span class="feature-tag">cv14</span> <span class="feature-name">Character Variant 14</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-dlig">
+                    <label for="inter-dlig"><span class="feature-tag">dlig</span> <span class="feature-name">Discretionary Ligatures</span> <span class="feature-chars">[!?]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-dnom">
+                    <label for="inter-dnom"><span class="feature-tag">dnom</span> <span class="feature-name">Denominators</span> <span class="feature-chars">[()+,.0123456789=]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-frac">
+                    <label for="inter-frac"><span class="feature-tag">frac</span> <span class="feature-name">Fractions</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-locl">
+                    <label for="inter-locl"><span class="feature-tag">locl</span> <span class="feature-name">Localized Forms</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-numr">
+                    <label for="inter-numr"><span class="feature-tag">numr</span> <span class="feature-name">Numerators</span> <span class="feature-chars">[()+,.0123456789=in]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-ordn">
+                    <label for="inter-ordn"><span class="feature-tag">ordn</span> <span class="feature-name">Ordinals</span> <span class="feature-chars">[.No]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-pnum">
+                    <label for="inter-pnum"><span class="feature-tag">pnum</span> <span class="feature-name">Proportional Numbers</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-salt">
+                    <label for="inter-salt"><span class="feature-tag">salt</span> <span class="feature-name">Stylistic Alternates</span> <span class="feature-chars">[13469GIafltu]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-sinf">
+                    <label for="inter-sinf"><span class="feature-tag">sinf</span> <span class="feature-name">Scientific Inferiors</span> <span class="feature-chars">[()+0123456789=[]abcdefghijklmn…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-ss01">
+                    <label for="inter-ss01"><span class="feature-tag">ss01</span> <span class="feature-name">Stylistic Set 01</span> <span class="feature-chars">[3469]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-ss02">
+                    <label for="inter-ss02"><span class="feature-tag">ss02</span> <span class="feature-name">Stylistic Set 02</span> <span class="feature-chars">[0Il]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-ss03">
+                    <label for="inter-ss03"><span class="feature-tag">ss03</span> <span class="feature-name">Stylistic Set 03</span> <span class="feature-chars">[,;]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-ss04">
+                    <label for="inter-ss04"><span class="feature-tag">ss04</span> <span class="feature-name">Stylistic Set 04</span> <span class="feature-chars">[Il]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-ss05">
+                    <label for="inter-ss05"><span class="feature-tag">ss05</span> <span class="feature-name">Stylistic Set 05</span> <span class="feature-chars">[!#+-0123456789<=>?ABCDEFGHIJKL…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-ss06">
+                    <label for="inter-ss06"><span class="feature-tag">ss06</span> <span class="feature-name">Stylistic Set 06</span> <span class="feature-chars">[!#+-0123456789<=>?ABCDEFGHIJKL…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-ss07">
+                    <label for="inter-ss07"><span class="feature-tag">ss07</span> <span class="feature-name">Stylistic Set 07</span> <span class="feature-chars">[!,.:;?ij]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-ss08">
+                    <label for="inter-ss08"><span class="feature-tag">ss08</span> <span class="feature-name">Stylistic Set 08</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-subs">
+                    <label for="inter-subs"><span class="feature-tag">subs</span> <span class="feature-name">Subscript</span> <span class="feature-chars">[()+0123456789=[]abcdefghijklmn…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-sups">
+                    <label for="inter-sups"><span class="feature-tag">sups</span> <span class="feature-name">Superscript</span> <span class="feature-chars">[()+0123456789=[]abcdefghijklmn…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-tnum">
+                    <label for="inter-tnum"><span class="feature-tag">tnum</span> <span class="feature-name">Tabular Numbers</span> <span class="feature-chars">[ ()*+,-.0123456789:;<=>[]{}~]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="inter-zero">
+                    <label for="inter-zero"><span class="feature-tag">zero</span> <span class="feature-name">Slashed Zero</span> <span class="feature-chars">[0]</span></label>
+                </div>
+                </div>
+            </div>
+
+            <div class="features-column">
+                <div class="features-title">Source Sans 3</div>
+                <div class="features-list">
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-aalt">
+                    <label for="ss3-aalt"><span class="feature-tag">aalt</span> <span class="feature-name">Access All Alternates</span> <span class="feature-chars">[!"&'(),./0123456789?@ABCDEFGHI…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-c2sc">
+                    <label for="ss3-c2sc"><span class="feature-tag">c2sc</span> <span class="feature-name">Caps to Small Caps</span> <span class="feature-chars">[!"&'()0123456789?ABCDEFGHIJKLM…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-case">
+                    <label for="ss3-case"><span class="feature-tag">case</span> <span class="feature-name">Case-Sensitive Forms</span> <span class="feature-chars">[0123456789@]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ccmp">
+                    <label for="ss3-ccmp"><span class="feature-tag">ccmp</span> <span class="feature-name">Glyph Composition</span> <span class="feature-chars">[ACEGIJLOTUacdegilmnotu]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv01">
+                    <label for="ss3-cv01"><span class="feature-tag">cv01</span> <span class="feature-name">Character Variant 01</span> <span class="feature-chars">[I]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv02">
+                    <label for="ss3-cv02"><span class="feature-tag">cv02</span> <span class="feature-name">Character Variant 02</span> <span class="feature-chars">[a]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv03">
+                    <label for="ss3-cv03"><span class="feature-tag">cv03</span> <span class="feature-name">Character Variant 03</span> <span class="feature-chars">[g]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv04">
+                    <label for="ss3-cv04"><span class="feature-tag">cv04</span> <span class="feature-name">Character Variant 04</span> <span class="feature-chars">[l]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv05">
+                    <label for="ss3-cv05"><span class="feature-tag">cv05</span> <span class="feature-name">Character Variant 05</span> <span class="feature-chars">[a]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv06">
+                    <label for="ss3-cv06"><span class="feature-tag">cv06</span> <span class="feature-name">Character Variant 06</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv07">
+                    <label for="ss3-cv07"><span class="feature-tag">cv07</span> <span class="feature-name">Character Variant 07</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv08">
+                    <label for="ss3-cv08"><span class="feature-tag">cv08</span> <span class="feature-name">Character Variant 08</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv09">
+                    <label for="ss3-cv09"><span class="feature-tag">cv09</span> <span class="feature-name">Character Variant 09</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv10">
+                    <label for="ss3-cv10"><span class="feature-tag">cv10</span> <span class="feature-name">Character Variant 10</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv11">
+                    <label for="ss3-cv11"><span class="feature-tag">cv11</span> <span class="feature-name">Character Variant 11</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv12">
+                    <label for="ss3-cv12"><span class="feature-tag">cv12</span> <span class="feature-name">Character Variant 12</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv13">
+                    <label for="ss3-cv13"><span class="feature-tag">cv13</span> <span class="feature-name">Character Variant 13</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv14">
+                    <label for="ss3-cv14"><span class="feature-tag">cv14</span> <span class="feature-name">Character Variant 14</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv15">
+                    <label for="ss3-cv15"><span class="feature-tag">cv15</span> <span class="feature-name">Character Variant 15</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv16">
+                    <label for="ss3-cv16"><span class="feature-tag">cv16</span> <span class="feature-name">Character Variant 16</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv17">
+                    <label for="ss3-cv17"><span class="feature-tag">cv17</span> <span class="feature-name">Character Variant 17</span> <span class="feature-chars">[0123456789]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv18">
+                    <label for="ss3-cv18"><span class="feature-tag">cv18</span> <span class="feature-name">Character Variant 18</span> <span class="feature-chars">[0]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-cv19">
+                    <label for="ss3-cv19"><span class="feature-tag">cv19</span> <span class="feature-name">Character Variant 19</span> <span class="feature-chars">[0]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-dlig">
+                    <label for="ss3-dlig"><span class="feature-tag">dlig</span> <span class="feature-name">Discretionary Ligatures</span> <span class="feature-chars">[!().?AETaet]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-dnom">
+                    <label for="ss3-dnom"><span class="feature-tag">dnom</span> <span class="feature-name">Denominators</span> <span class="feature-chars">[(),.0123456789]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-frac">
+                    <label for="ss3-frac"><span class="feature-tag">frac</span> <span class="feature-name">Fractions</span> <span class="feature-chars">[(),./0123456789]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-hlig">
+                    <label for="ss3-hlig"><span class="feature-tag">hlig</span> <span class="feature-name">Historical Ligatures</span> <span class="feature-chars">[AETaet]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-liga">
+                    <label for="ss3-liga"><span class="feature-tag">liga</span> <span class="feature-name">Standard Ligatures</span> <span class="feature-chars">[ft]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-locl">
+                    <label for="ss3-locl"><span class="feature-tag">locl</span> <span class="feature-name">Localized Forms</span> <span class="feature-chars">[a]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-numr">
+                    <label for="ss3-numr"><span class="feature-tag">numr</span> <span class="feature-name">Numerators</span> <span class="feature-chars">[(),.0123456789]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-onum">
+                    <label for="ss3-onum"><span class="feature-tag">onum</span> <span class="feature-name">Oldstyle Numbers</span> <span class="feature-chars">[0123456789]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ordn">
+                    <label for="ss3-ordn"><span class="feature-tag">ordn</span> <span class="feature-name">Ordinals</span> <span class="feature-chars">[abcdefghijklmnopqrstuvwxyz]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-pnum">
+                    <label for="ss3-pnum"><span class="feature-tag">pnum</span> <span class="feature-name">Proportional Numbers</span> <span class="feature-chars">[0123456789]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-salt">
+                    <label for="ss3-salt"><span class="feature-tag">salt</span> <span class="feature-name">Stylistic Alternates</span> <span class="feature-chars">[0123456789Iagl]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-sinf">
+                    <label for="ss3-sinf"><span class="feature-tag">sinf</span> <span class="feature-name">Scientific Inferiors</span> <span class="feature-chars">[()+,.0123456789=]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-smcp">
+                    <label for="ss3-smcp"><span class="feature-tag">smcp</span> <span class="feature-name">Small Caps</span> <span class="feature-chars">[0123456789abcdefghijklmnopqrst…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ss01">
+                    <label for="ss3-ss01"><span class="feature-tag">ss01</span> <span class="feature-name">Stylistic Set 01</span> <span class="feature-chars">[I]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ss02">
+                    <label for="ss3-ss02"><span class="feature-tag">ss02</span> <span class="feature-name">Stylistic Set 02</span> <span class="feature-chars">[agl]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ss03">
+                    <label for="ss3-ss03"><span class="feature-tag">ss03</span> <span class="feature-name">Stylistic Set 03</span> <span class="feature-chars">[a]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ss04">
+                    <label for="ss3-ss04"><span class="feature-tag">ss04</span> <span class="feature-name">Stylistic Set 04</span> <span class="feature-chars">[g]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ss05">
+                    <label for="ss3-ss05"><span class="feature-tag">ss05</span> <span class="feature-name">Stylistic Set 05</span> <span class="feature-chars">[l]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ss06">
+                    <label for="ss3-ss06"><span class="feature-tag">ss06</span> <span class="feature-name">Stylistic Set 06</span> <span class="feature-chars">[a]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ss07">
+                    <label for="ss3-ss07"><span class="feature-tag">ss07</span> <span class="feature-name">Stylistic Set 07</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ss08">
+                    <label for="ss3-ss08"><span class="feature-tag">ss08</span> <span class="feature-name">Stylistic Set 08</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ss09">
+                    <label for="ss3-ss09"><span class="feature-tag">ss09</span> <span class="feature-name">Stylistic Set 09</span> <span class="feature-chars">[0123456789]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-ss10">
+                    <label for="ss3-ss10"><span class="feature-tag">ss10</span> <span class="feature-name">Stylistic Set 10</span> <span class="feature-chars">[0]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-subs">
+                    <label for="ss3-subs"><span class="feature-tag">subs</span> <span class="feature-name">Subscript</span> <span class="feature-chars">[()+,.0123456789=]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-sups">
+                    <label for="ss3-sups"><span class="feature-tag">sups</span> <span class="feature-name">Superscript</span> <span class="feature-chars">[()+,.0123456789:=ABCDEFGHIJKLM…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-titl">
+                    <label for="ss3-titl"><span class="feature-tag">titl</span> <span class="feature-name">Titling Alternates</span> <span class="feature-chars">[0123456789]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="ss3-zero">
+                    <label for="ss3-zero"><span class="feature-tag">zero</span> <span class="feature-name">Slashed Zero</span> <span class="feature-chars">[0]</span></label>
+                </div>
+                </div>
+            </div>
+
+            <div class="features-column">
+                <div class="features-title">Lab3 Sans</div>
+                <div class="features-list">
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-aalt">
+                    <label for="lab3-aalt"><span class="feature-tag">aalt</span> <span class="feature-name">Access All Alternates</span> <span class="feature-chars">[ !()*+,-.0123456789:;<=>?@AO[]…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-calt">
+                    <label for="lab3-calt"><span class="feature-tag">calt</span> <span class="feature-name">Contextual Alternates</span> <span class="feature-chars">[-<=>]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-case">
+                    <label for="lab3-case"><span class="feature-tag">case</span> <span class="feature-name">Case-Sensitive Forms</span> <span class="feature-chars">[()*+-:<=>@[]{}~]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-ccmp">
+                    <label for="lab3-ccmp"><span class="feature-tag">ccmp</span> <span class="feature-name">Glyph Composition</span> <span class="feature-chars">[!#+-/0123456789<=>?ABCDEFGHIJK…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv01">
+                    <label for="lab3-cv01"><span class="feature-tag">cv01</span> <span class="feature-name">Character Variant 01</span> <span class="feature-chars">[1]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv02">
+                    <label for="lab3-cv02"><span class="feature-tag">cv02</span> <span class="feature-name">Character Variant 02</span> <span class="feature-chars">[4]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv03">
+                    <label for="lab3-cv03"><span class="feature-tag">cv03</span> <span class="feature-name">Character Variant 03</span> <span class="feature-chars">[6]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv04">
+                    <label for="lab3-cv04"><span class="feature-tag">cv04</span> <span class="feature-name">Character Variant 04</span> <span class="feature-chars">[9]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv05">
+                    <label for="lab3-cv05"><span class="feature-tag">cv05</span> <span class="feature-name">Character Variant 05</span> <span class="feature-chars">[l]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv06">
+                    <label for="lab3-cv06"><span class="feature-tag">cv06</span> <span class="feature-name">Character Variant 06</span> <span class="feature-chars">[u]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv07">
+                    <label for="lab3-cv07"><span class="feature-tag">cv07</span> <span class="feature-name">Character Variant 07</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv08">
+                    <label for="lab3-cv08"><span class="feature-tag">cv08</span> <span class="feature-name">Character Variant 08</span> <span class="feature-chars">[I]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv09">
+                    <label for="lab3-cv09"><span class="feature-tag">cv09</span> <span class="feature-name">Character Variant 09</span> <span class="feature-chars">[3]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv10">
+                    <label for="lab3-cv10"><span class="feature-tag">cv10</span> <span class="feature-name">Character Variant 10</span> <span class="feature-chars">[G]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv11">
+                    <label for="lab3-cv11"><span class="feature-tag">cv11</span> <span class="feature-name">Character Variant 11</span> <span class="feature-chars">[a]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv12">
+                    <label for="lab3-cv12"><span class="feature-tag">cv12</span> <span class="feature-name">Character Variant 12</span> <span class="feature-chars">[f]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv13">
+                    <label for="lab3-cv13"><span class="feature-tag">cv13</span> <span class="feature-name">Character Variant 13</span> <span class="feature-chars">[t]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-cv14">
+                    <label for="lab3-cv14"><span class="feature-tag">cv14</span> <span class="feature-name">Character Variant 14</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-dlig">
+                    <label for="lab3-dlig"><span class="feature-tag">dlig</span> <span class="feature-name">Discretionary Ligatures</span> <span class="feature-chars">[!?]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-dnom">
+                    <label for="lab3-dnom"><span class="feature-tag">dnom</span> <span class="feature-name">Denominators</span> <span class="feature-chars">[()+,.0123456789=]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-frac">
+                    <label for="lab3-frac"><span class="feature-tag">frac</span> <span class="feature-name">Fractions</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-locl">
+                    <label for="lab3-locl"><span class="feature-tag">locl</span> <span class="feature-name">Localized Forms</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-numr">
+                    <label for="lab3-numr"><span class="feature-tag">numr</span> <span class="feature-name">Numerators</span> <span class="feature-chars">[()+,.0123456789=in]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-ordn">
+                    <label for="lab3-ordn"><span class="feature-tag">ordn</span> <span class="feature-name">Ordinals</span> <span class="feature-chars">[.No]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-pnum">
+                    <label for="lab3-pnum"><span class="feature-tag">pnum</span> <span class="feature-name">Proportional Numbers</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-salt">
+                    <label for="lab3-salt"><span class="feature-tag">salt</span> <span class="feature-name">Stylistic Alternates</span> <span class="feature-chars">[13469GIafltu]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-sinf">
+                    <label for="lab3-sinf"><span class="feature-tag">sinf</span> <span class="feature-name">Scientific Inferiors</span> <span class="feature-chars">[()+0123456789=[]abcdefghijklmn…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-ss01">
+                    <label for="lab3-ss01"><span class="feature-tag">ss01</span> <span class="feature-name">Stylistic Set 01</span> <span class="feature-chars">[3469]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-ss02">
+                    <label for="lab3-ss02"><span class="feature-tag">ss02</span> <span class="feature-name">Stylistic Set 02</span> <span class="feature-chars">[0Il]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-ss03">
+                    <label for="lab3-ss03"><span class="feature-tag">ss03</span> <span class="feature-name">Stylistic Set 03</span> <span class="feature-chars">[,;]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-ss04">
+                    <label for="lab3-ss04"><span class="feature-tag">ss04</span> <span class="feature-name">Stylistic Set 04</span> <span class="feature-chars">[Il]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-ss05">
+                    <label for="lab3-ss05"><span class="feature-tag">ss05</span> <span class="feature-name">Stylistic Set 05</span> <span class="feature-chars">[!#+-0123456789<=>?ABCDEFGHIJKL…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-ss06">
+                    <label for="lab3-ss06"><span class="feature-tag">ss06</span> <span class="feature-name">Stylistic Set 06</span> <span class="feature-chars">[!#+-0123456789<=>?ABCDEFGHIJKL…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-ss07">
+                    <label for="lab3-ss07"><span class="feature-tag">ss07</span> <span class="feature-name">Stylistic Set 07</span> <span class="feature-chars">[!,.:;?ij]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-ss08">
+                    <label for="lab3-ss08"><span class="feature-tag">ss08</span> <span class="feature-name">Stylistic Set 08</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-subs">
+                    <label for="lab3-subs"><span class="feature-tag">subs</span> <span class="feature-name">Subscript</span> <span class="feature-chars">[()+0123456789=[]abcdefghijklmn…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-sups">
+                    <label for="lab3-sups"><span class="feature-tag">sups</span> <span class="feature-name">Superscript</span> <span class="feature-chars">[()+0123456789=[]abcdefghijklmn…]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-tnum">
+                    <label for="lab3-tnum"><span class="feature-tag">tnum</span> <span class="feature-name">Tabular Numbers</span> <span class="feature-chars">[ ()*+,-.0123456789:;<=>[]{}~]</span></label>
+                </div>
+                <div class="feature-checkbox">
+                    <input type="checkbox" id="lab3-zero">
+                    <label for="lab3-zero"><span class="feature-tag">zero</span> <span class="feature-name">Slashed Zero</span> <span class="feature-chars">[0]</span></label>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+
+        <div class="section-title">Title Text (Large) - Focus on 'g' character</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Weight</th>
+                    <th>Inter (single-storey g)</th>
+                    <th>Source Sans 3 (2-storey g)</th>
+                    <th>Lab3 Sans (result)</th>
+                </tr>
+            </thead>
+            <tbody id="title-table-body">
+            </tbody>
+        </table>
+
+        <div class="controls">
+            <div class="control-group">
+                <label class="control-label" for="bodyText">Body Text:</label>
+                <textarea id="bodyText">369 going garage gigantic program debugging recognize organization</textarea>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Body Size: <span id="bodySizeValue" class="size-value">1em</span></label>
+                <input type="range" id="bodySize" min="0.5" max="3" value="1" step="0.1">
+            </div>
+        </div>
+
+        <div class="section-title">Body Text (Normal) - Text readability</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Weight</th>
+                    <th>Inter</th>
+                    <th>Source Sans 3</th>
+                    <th>Lab3 Sans</th>
+                </tr>
+            </thead>
+            <tbody id="body-table-body">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const variants = [
+            { name: 'Regular', weight: 400 },
+            { name: 'Medium', weight: 500 },
+            { name: 'SemiBold', weight: 600 },
+            { name: 'Bold', weight: 700 },
+            { name: 'Black', weight: 900 }
+        ];
+
+        const titleTextInput = document.getElementById('titleText');
+        const bodyTextInput = document.getElementById('bodyText');
+        const titleSizeInput = document.getElementById('titleSize');
+        const bodySizeInput = document.getElementById('bodySize');
+        const titleSizeValue = document.getElementById('titleSizeValue');
+        const bodySizeValue = document.getElementById('bodySizeValue');
+        const titleTableBody = document.getElementById('title-table-body');
+        const bodyTableBody = document.getElementById('body-table-body');
+
+        function createRow(variant, textContent, fontSize) {
+            const row = document.createElement('tr');
+
+            // Variant name
+            const nameCell = document.createElement('td');
+            nameCell.className = 'variant-name';
+            nameCell.textContent = variant.name;
+            row.appendChild(nameCell);
+
+            // Inter cell
+            const interCell = document.createElement('td');
+            interCell.style.fontFamily = "'Inter'";
+            interCell.style.fontWeight = variant.weight;
+            interCell.style.fontSize = fontSize;
+            interCell.style.lineHeight = '1.4';
+            interCell.textContent = textContent;
+            row.appendChild(interCell);
+
+            // Source Sans 3 cell
+            const ss3Cell = document.createElement('td');
+            ss3Cell.style.fontFamily = "'Source Sans 3'";
+            ss3Cell.style.fontWeight = variant.weight;
+            ss3Cell.style.fontSize = fontSize;
+            ss3Cell.style.lineHeight = '1.4';
+            ss3Cell.textContent = textContent;
+            row.appendChild(ss3Cell);
+
+            // Lab3 Sans cell
+            const lab3Cell = document.createElement('td');
+            lab3Cell.style.fontFamily = "'Lab3 Sans'";
+            lab3Cell.style.fontWeight = variant.weight;
+            lab3Cell.style.fontSize = fontSize;
+            lab3Cell.style.lineHeight = '1.4';
+            lab3Cell.textContent = textContent;
+            row.appendChild(lab3Cell);
+
+            return row;
+        }
+
+        function updateTables() {
+            const titleText = titleTextInput.value;
+            const bodyText = bodyTextInput.value;
+            const titleSize = titleSizeInput.value + 'em';
+            const bodySize = bodySizeInput.value + 'em';
+
+            // Update size displays
+            titleSizeValue.textContent = titleSize;
+            bodySizeValue.textContent = bodySize;
+
+            // Clear tables
+            titleTableBody.innerHTML = '';
+            bodyTableBody.innerHTML = '';
+
+            // Generate title table
+            variants.forEach(variant => {
+                titleTableBody.appendChild(createRow(variant, titleText, titleSize));
+            });
+
+            // Generate body table
+            variants.forEach(variant => {
+                bodyTableBody.appendChild(createRow(variant, bodyText, bodySize));
+            });
+
+            // Reapply font features after table regeneration
+            updateFontFeatures();
+        }
+
+        // Feature checkbox handling - separate for each font
+        // Inter: 39 features
+        const interFeatures = {
+            'inter-aalt': 'aalt', 'inter-calt': 'calt', 'inter-case': 'case', 'inter-ccmp': 'ccmp',
+            'inter-cv01': 'cv01', 'inter-cv02': 'cv02', 'inter-cv03': 'cv03', 'inter-cv04': 'cv04',
+            'inter-cv05': 'cv05', 'inter-cv06': 'cv06', 'inter-cv07': 'cv07', 'inter-cv08': 'cv08',
+            'inter-cv09': 'cv09', 'inter-cv10': 'cv10', 'inter-cv11': 'cv11', 'inter-cv12': 'cv12',
+            'inter-cv13': 'cv13', 'inter-cv14': 'cv14', 'inter-dlig': 'dlig', 'inter-dnom': 'dnom',
+            'inter-frac': 'frac', 'inter-locl': 'locl', 'inter-numr': 'numr', 'inter-ordn': 'ordn',
+            'inter-pnum': 'pnum', 'inter-salt': 'salt', 'inter-sinf': 'sinf', 'inter-ss01': 'ss01',
+            'inter-ss02': 'ss02', 'inter-ss03': 'ss03', 'inter-ss04': 'ss04', 'inter-ss05': 'ss05',
+            'inter-ss06': 'ss06', 'inter-ss07': 'ss07', 'inter-ss08': 'ss08', 'inter-subs': 'subs',
+            'inter-sups': 'sups', 'inter-tnum': 'tnum', 'inter-zero': 'zero'
+        };
+
+        // Source Sans 3: 50 features
+        const ss3Features = {
+            'ss3-aalt': 'aalt', 'ss3-c2sc': 'c2sc', 'ss3-case': 'case', 'ss3-ccmp': 'ccmp',
+            'ss3-cv01': 'cv01', 'ss3-cv02': 'cv02', 'ss3-cv03': 'cv03', 'ss3-cv04': 'cv04',
+            'ss3-cv05': 'cv05', 'ss3-cv06': 'cv06', 'ss3-cv07': 'cv07', 'ss3-cv08': 'cv08',
+            'ss3-cv09': 'cv09', 'ss3-cv10': 'cv10', 'ss3-cv11': 'cv11', 'ss3-cv12': 'cv12',
+            'ss3-cv13': 'cv13', 'ss3-cv14': 'cv14', 'ss3-cv15': 'cv15', 'ss3-cv16': 'cv16',
+            'ss3-cv17': 'cv17', 'ss3-cv18': 'cv18', 'ss3-cv19': 'cv19', 'ss3-dlig': 'dlig',
+            'ss3-dnom': 'dnom', 'ss3-frac': 'frac', 'ss3-hlig': 'hlig', 'ss3-liga': 'liga',
+            'ss3-locl': 'locl', 'ss3-numr': 'numr', 'ss3-onum': 'onum', 'ss3-ordn': 'ordn',
+            'ss3-pnum': 'pnum', 'ss3-salt': 'salt', 'ss3-sinf': 'sinf', 'ss3-smcp': 'smcp',
+            'ss3-ss01': 'ss01', 'ss3-ss02': 'ss02', 'ss3-ss03': 'ss03', 'ss3-ss04': 'ss04',
+            'ss3-ss05': 'ss05', 'ss3-ss06': 'ss06', 'ss3-ss07': 'ss07', 'ss3-ss08': 'ss08',
+            'ss3-ss09': 'ss09', 'ss3-ss10': 'ss10', 'ss3-subs': 'subs', 'ss3-sups': 'sups',
+            'ss3-titl': 'titl', 'ss3-zero': 'zero'
+        };
+
+        // Lab3 Sans: 39 features (same as Inter)
+        const lab3Features = {
+            'lab3-aalt': 'aalt', 'lab3-calt': 'calt', 'lab3-case': 'case', 'lab3-ccmp': 'ccmp',
+            'lab3-cv01': 'cv01', 'lab3-cv02': 'cv02', 'lab3-cv03': 'cv03', 'lab3-cv04': 'cv04',
+            'lab3-cv05': 'cv05', 'lab3-cv06': 'cv06', 'lab3-cv07': 'cv07', 'lab3-cv08': 'cv08',
+            'lab3-cv09': 'cv09', 'lab3-cv10': 'cv10', 'lab3-cv11': 'cv11', 'lab3-cv12': 'cv12',
+            'lab3-cv13': 'cv13', 'lab3-cv14': 'cv14', 'lab3-dlig': 'dlig', 'lab3-dnom': 'dnom',
+            'lab3-frac': 'frac', 'lab3-locl': 'locl', 'lab3-numr': 'numr', 'lab3-ordn': 'ordn',
+            'lab3-pnum': 'pnum', 'lab3-salt': 'salt', 'lab3-sinf': 'sinf', 'lab3-ss01': 'ss01',
+            'lab3-ss02': 'ss02', 'lab3-ss03': 'ss03', 'lab3-ss04': 'ss04', 'lab3-ss05': 'ss05',
+            'lab3-ss06': 'ss06', 'lab3-ss07': 'ss07', 'lab3-ss08': 'ss08', 'lab3-subs': 'subs',
+            'lab3-sups': 'sups', 'lab3-tnum': 'tnum', 'lab3-zero': 'zero'
+        };
+
+        function getEnabledFeatures(featureMap) {
+            const enabled = [];
+            for (const [checkboxId, featureTag] of Object.entries(featureMap)) {
+                const checkbox = document.getElementById(checkboxId);
+                if (checkbox && checkbox.checked) {
+                    enabled.push(`"${featureTag}"`);
+                }
+            }
+            return enabled.length > 0 ? enabled.join(', ') : 'normal';
+        }
+
+        function updateFontFeatures() {
+            const interSettings = getEnabledFeatures(interFeatures);
+            const ss3Settings = getEnabledFeatures(ss3Features);
+            const lab3Settings = getEnabledFeatures(lab3Features);
+
+            // Apply features to each font column independently
+            document.querySelectorAll('td').forEach(cell => {
+                const fontFamily = cell.style.fontFamily;
+
+                if (fontFamily && fontFamily.includes('Inter') && !fontFamily.includes('Lab3')) {
+                    cell.style.fontFeatureSettings = interSettings;
+                } else if (fontFamily && fontFamily.includes('Source Sans 3')) {
+                    cell.style.fontFeatureSettings = ss3Settings;
+                } else if (fontFamily && fontFamily.includes('Lab3 Sans')) {
+                    cell.style.fontFeatureSettings = lab3Settings;
+                }
+            });
+        }
+
+        // Add event listeners to all feature checkboxes
+        const allFeatures = {...interFeatures, ...ss3Features, ...lab3Features};
+        for (const checkboxId of Object.keys(allFeatures)) {
+            const checkbox = document.getElementById(checkboxId);
+            if (checkbox) {
+                checkbox.addEventListener('change', updateFontFeatures);
+            }
+        }
+
+        // Mirror Inter and Lab3 checkboxes (they have identical feature sets)
+        function mirrorCheckbox(sourceId, targetId) {
+            const source = document.getElementById(sourceId);
+            const target = document.getElementById(targetId);
+
+            if (source && target) {
+                source.addEventListener('change', function(e) {
+                    // Only update if different to avoid potential loops
+                    if (target.checked !== source.checked) {
+                        target.checked = source.checked;
+                        // Trigger the feature update
+                        updateFontFeatures();
+                    }
+                });
+            }
+        }
+
+        // Set up bidirectional mirroring for all Inter/Lab3 feature pairs
+        for (const interCheckboxId of Object.keys(interFeatures)) {
+            const featureTag = interFeatures[interCheckboxId];
+            const lab3CheckboxId = 'lab3-' + featureTag;
+
+            // Mirror both directions
+            mirrorCheckbox(interCheckboxId, lab3CheckboxId);
+            mirrorCheckbox(lab3CheckboxId, interCheckboxId);
+        }
+
+        // Event listeners for live updates
+        titleTextInput.addEventListener('input', updateTables);
+        bodyTextInput.addEventListener('input', updateTables);
+        titleSizeInput.addEventListener('input', updateTables);
+        bodySizeInput.addEventListener('input', updateTables);
+
+        // Initialize tables
+        updateTables();
+    </script>
+</body>
+</html>
